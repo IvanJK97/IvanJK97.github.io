@@ -1,11 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Ivan Kok</title>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script src="scripts.js" async></script>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!--For email icon: from Google-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+      <!-- Link for favicon, made it on https://www.favicon.cc/ -->
+      <link rel='shortcut icon' type='image/x-icon' href='favicon3.ico' />
   </head>
-  <body>
-    <h1>Hello</h1>
+
+  <body class="canvas">
+  
+    <!-- Code for Navbar -->
+    <div class="navbar" id="navbar">
+      <div class="tabs">
+          <div class="tab" onclick="scrollHome()">
+            <p class="tabText">
+                Home
+            </p>
+          </div>
+          <div class="tab" onclick="scrollContact()">
+              <p class="tabText">
+                  Contact
+              </p>
+          </div>
+          <div class="tab">
+              <p class="tabText" onclick="scrollResume()">
+                  Resume
+              </p>
+          </div>
+          <div class="tab">
+              <p class="tabText" onclick="scrollProjects()">
+                  Projects
+              </p>
+          </div>
+      </div>
+    </div>
+
+    <!-- Picture, Intro, and IconsBar/footer (Home) -->
+    <div>
+        <img class="portrait" src="img/Portrait.jpg" alt="Image not found">
+        
+        <p class = "introParagraph">
+          Welcome to my website! I'm Ivan Kok, a senior at Lehigh University and 
+          an aspiring web developer and occasional Indie game creator.
+          I'm learning a lot right now, building a full-stack web app in Node and
+          React along with schooling.
+          During my time as a software developer intern at Bentley Systems, I worked on
+          a file watcher that interprets what file events had happened based on certain patterns.
+          I also worked on the side for Dolomite my junior year, a decentralized exchange
+          and portfolio management tool, as a front-end developer. 
+          Their website is 
+          <a style="color: black" href = "https://dolomite.io" target="_blank">https://dolomite.io</a>
+          and you can check out a sample of my work with them here under the Projects section.
+          Please feel free to get in touch with me through my contact information under the Contact section.
+          Thank you for visiting my website!
+        </p>
+        
+        <div class="iconsBar" id="iconsBar">
+            <div class="icons">
+                    <p class="iconText">Find me on: </p>
+                    <!-- Check out icons list here: https://www.w3schools.com/icons/icons_reference.asp -->
+                    <i class="fa fa-github githubIcon" style="font-size:36px" onclick="redirectGithub()"></i>
+                    <span class="toolTipGithub">Github</span>
+                    <i class="fa fa-linkedin-square linkedinIcon" onclick="redirectLinkedIn()" style="font-size:36px"></i>
+                    <span class="toolTipLinkedin">LinkedIn</span>
+                    <i class="fa fa-facebook-square facebookIcon" onclick="redirectFacebook()" style="font-size:36px"></i>
+                    <span class="toolTipFacebook">Facebook</span>
+                    <i class="fa fa-instagram instagramIcon" onclick="redirectInstagram()" style="font-size:36px"></i>
+                    <span class="toolTipInstagram">Instagram</span>
+            </div>
+            <!-- Got rid of quote here
+            <p class="commQuote">"A good relationship starts with good communication."</p>
+            -->
+        </div>
+    </div>
+
+    <!-- Contact-->
+    <div class="contactDiv">
+        <p class="contactTitle">Contact Information</p>
+        <div class="contactParagraph">
+            <i class="material-icons" style="font-size:36px; transform: translateY(10px);">email</i>
+            <p class="email">You can contact me by my email:</p>
+            <p class="bolder">ivk215@lehigh.edu (school)</p>
+            or
+            <p class="bolder">ivanjayk@gmail.com (personal)</p>
+            <i class="fa fa-phone" style="font-size:36px; transform: translateY(7px);" class="phoneIcon"></i>
+            <p class="phone">My cellphone number is: </p><p class="bolder"> 646-338-9557</p>
+        </div>
+    </div>
+
+    <!-- Resume -->
+    <button class="resumeButton" onclick="redirectResume()" id="resumeButton">
+        View Resume
+    </button>
+    
+    <!-- Quote doesn't look good here
+    <div class="projectBar">
+        <p class="workQuote">
+            "You can read about what I do or you can experience what I do."
+        </p>
+    </div>
+    -->
+
+    <!-- Neon project title-->
+    <div class="wrapper" id="projects">
+        <div class="neon-wrapper">
+            <span class="txt" >projects</span>
+            <span class="gradient" id="gradient"></span>
+            <span class="dodge" id="dodge"></span>
+        </div>
+    </div>
+
+    <div class="projectsDiv">
+        <p class="projectsParagraph">
+            For the full list of projects, please check out my Github: 
+            <a style="color: lightskyblue; word-wrap: break-word" href="https://github.com/IvanJK97" target="_blank">https://github.com/IvanJK97</a>
+        </p>
+
+        <p class="projectTitle">
+            Snake Game
+        </p>
+        <img class="snakeGame" src="img/SnakeGame.gif" alt="Gif for Snake Game not found">
+        <p class = "projectsParagraph">
+            Browser version of the classic arcade game "Snake". Done using plain HTML, JavaScript, CSS.
+            Goal is to get the apple without colliding with snake's body or edge of screen.
+
+        </br>
+        </br>
+            Try the demo on Codepen: 
+            <a style="color: lightskyblue; word-wrap: break-word" href = "https://codepen.io/IvanKok/pen/JQzwEW" target="_blank">https://codepen.io/IvanKok/pen/JQzwEW</a>
+        </br>
+            Check out the source code and documentation on:
+            <a style="color: lightskyblue; word-wrap: break-word" href = "https://github.com/IvanJK97/Snake-Game" target="_blank">https://github.com/IvanJK97/Snake-Game</a>
+        </p>
+
+
+        <p class="projectTitle">
+            Maze Game
+        </p>
+        <div class="videoContainer">
+            <video class = "mazeGameVideo" controls>
+                    <source src="img/MazeGame Explanation.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+            </video>
+        </div>
+        <p class = "projectsParagraph">
+            Maze mini-game made with jQuery, HTML, CSS, and JavaScript. Players click and drag the character across the map
+            to the goal while avoiding touching the walls of the maze. Check out the source code on: 
+             <a style="color: lightskyblue" href = "https://github.com/IvanJK97/Maze-Game" target="_blank">https://github.com/IvanJK97/Maze-Game</a>
+        </p>
+        
+        <p class="projectTitle">
+            Dolomite's Support Site Prototype
+        </p>
+        <img class="dolomite" src="img/Dolomite.JPG"
+        alt="Image not found">
+        <p class = "projectsParagraph">
+            Picture of the prototype of Dolomite's support-site I worked on. It is made using the React web framework.
+            Clicking on each tab on the left purple navbar would bring a new webpage with its corresponding HTML elements
+            onto the page through React Router. Used state and prop to change the style and link of nav tabs on nav bar when
+            user clicks on it.
+        </p>
+    </div>
+
   </body>
 </html>
